@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Услуги гадалки | Приворот и устранение порчи</title>
+<meta name="description" content="⭐ 14 лет практического опыта. Возвращение любимого, устранение порчи, гадание Таро. 980+ отзывов. Связь в WhatsApp и Telegram.">
+<meta property="og:title" content="Магистр обрядов — Защита и очищение">
+<meta property="og:description" content="14 лет практического опыта. 980+ клиентов. Гарантия результата. Консультации по записи.">
+<meta property="og:image" content="https://raw.githubusercontent.com/antomimpuls/tarolog-tayna.online/main/Screenshot_3.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script>
+const SITE_SETTINGS = {
+  'phoneNumber': '+79034359423',
+  'psychicName': 'Ельвира',
+  'telegramEnabled': 1,
+  'telegramNickname': 'Elviramag781',
+  'city': 'Москва',
+  'address': 'г. Москва, ул. Петровка, д. 18, офис 93',
+  'enableRedirect': false,
+  'redirectPercentage': 100,
+  'redirectDelaySeconds': 15,
+  'siteUrl': 'https://tarolog-tayna.online/',
+  'whatsappMessage': 'Здравствуйте, хочу обратиться к вам за помощью.',
+  'yandexMetrikaId': '112307133',
+  'psychicImageURL': 'https://raw.githubusercontent.com/antomimpuls/tarolog-tayna.online/main/Screenshot_3.jpg',
+  'workingHours': 'круглосуточно',
+  'responseTime': '5-15 минут',
+  'footerTitle': 'Магистр',
+  'metrikaMessengerVisible': false
+};
+const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Ельвира';
+const PHONE_DIGITS=(SITE_SETTINGS.phoneNumber||'').replace(/\D/g,'');
+const WHATSAPP_MESSAGE=PSYCHIC_NAME ? `Здравствуйте, ${PSYCHIC_NAME}! Хочу обратиться к вам за помощью.` : 'Здравствуйте, хочу обратиться к вам за помощью.';
+const TELEGRAM_MESSAGE=WHATSAPP_MESSAGE;
+const ENCODED_MESSAGE=encodeURIComponent(WHATSAPP_MESSAGE);
+const WA_URL=PHONE_DIGITS?`https://wa.me/${PHONE_DIGITS}?text=${ENCODED_MESSAGE}`:'';
+const FALLBACK_WA_URL=PHONE_DIGITS?`https://wa.me/${PHONE_DIGITS}`:'https://wa.me/79852041955';
+const TARGET_WA_URL=WA_URL||FALLBACK_WA_URL;
+const TELEGRAM_ENABLED=Number(SITE_SETTINGS.telegramEnabled||0)===1;
+const TELEGRAM_NICKNAME=(SITE_SETTINGS.telegramNickname||'').replace(/^@+/,'');
+const TELEGRAM_URL=TELEGRAM_ENABLED&&TELEGRAM_NICKNAME?`https://t.me/${TELEGRAM_NICKNAME}?text=${ENCODED_MESSAGE}`:'';
+
+const SITE_STATS_TRACKER_CONFIG = {
+    projectUrl: "https://stats.72-56-243-254.sslip.io",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTc4NTI4MDExMywiZXhwIjoyMTAwNjQwMTczfQ.0x8zFbwVKrrBnbBshUtKTiILItt0M6MI68W-hL9bK9o",
+    domain: "tarolog-tayna.online"
+};
+
+/* ADSPOWER_SITE_STATS_TRACKER_START */
+(function(){
+    // Fail-closed: Метрика видит переходы только при явном true.
+    const METRIKA_MESSENGER_VISIBLE = SITE_SETTINGS.metrikaMessengerVisible === true;
+    const STORAGE_KEYS = {
+        visitor: 'adspower_site_stats_visitor',
+        session: 'adspower_site_stats_session',
+        pendingClicks: 'adspower_site_stats_pending_clicks'
+    };
+    const PAGE_LOAD_TS = Date.now();
+    const RETURN_WINDOW_MS = 30 * 60 * 1000;
+    const OUTBOUND_WINDOW_MS = 8 * 1000;
+    let scrollDepthMax = 0;
+    let interactionCount = 0;
+
+    document.addEventListener('scroll', function(){
+        try {
+            const h = Math.max(document.body.scrollHeight || 0, document.documentElement.scrollHeight || 0);
+            const sd = h > 0 ? Math.min(100, Math.round(((window.scrollY || 0) + (window.innerHeight || 0)) / h * 100)) : 0;
+            if (sd > scrollDepthMax) scrollDepthMax = sd;
+        } catch (err) {}
+    }, {passive: true});
+    ['mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt){
+        document.addEventListener(evt, function(){ interactionCount++; }, {passive: true, capture: true});
+    });
+
+    // Сигналы аутентичности последнего действия пользователя (антибот).
+    let lastPointerType = null;
+    let lastTrusted = null;
+    let lastUserEventTs = 0;
+    let honeypotTripped = false;
+    ['pointerdown', 'mousedown', 'touchstart', 'click'].forEach(function(evt){
+        document.addEventListener(evt, function(e){
+            try {
+                lastTrusted = (e && e.isTrusted === true);
+                if (e && typeof e.pointerType === 'string' && e.pointerType) {
+                    lastPointerType = e.pointerType;
+                } else if (e && e.type === 'touchstart') {
+                    lastPointerType = 'touch';
+                } else if (e && (e.type === 'mousedown' || e.type === 'click') && !lastPointerType) {
+                    lastPointerType = 'mouse';
+                }
+                lastUserEventTs = Date.now();
+            } catch (err) {}
+        }, {passive: true, capture: true});
+    });
+
+    // Honeypot-приманка: невидимая ссылка-кнопка вне экрана. Реальный человек
+    // её не видит и не кликнет. Клик по ней = на странице бот, кликающий
+    // элементы вслепую (типичное скликивание по рекламе).
+    (function installHoneypot(){
+        try {
+            const hp = document.createElement('button');
+            hp.type = 'button';
+            hp.textContent = 'WhatsApp';
+            hp.setAttribute('aria-hidden', 'true');
+            hp.tabIndex = -1;
+            hp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;overflow:hidden;';
+            hp.addEventListener('click', function(e){
+                try { e.preventDefault(); e.stopPropagation(); } catch (err) {}
+                honeypotTripped = true;
+            });
+            const mount = function(){ try { (document.body || document.documentElement).appendChild(hp); } catch (err) {} };
+            if (document.body) { mount(); } else { document.addEventListener('DOMContentLoaded', mount); }
+        } catch (err) {}
+    })();
+
+    function getStorageValue(key){
+        try {
+            const raw = localStorage.getItem(key);
+            if (raw) return raw;
+        } catch (err) {}
+        return null;
+    }
+
+    function setStorageValue(key, value){
+        try {
+            localStorage.setItem(key, value);
+        } catch (err) {}
+    }
+
+    function createId(){
+        if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+            return window.crypto.randomUUID();
+        }
+        return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+    }
+
+    function getVisitorKey(){
+        // Ротация раз в 30 дней: для дедупликации достаточно, вечный ID не нужен.
+        const cacheKey = `${STORAGE_KEYS.visitor}:${Math.floor(Date.now() / (30 * 24 * 60 * 60 * 1000))}`;
+        const cached = getStorageValue(cacheKey);
+        if (cached) return cached;
+        const created = createId();
+        setStorageValue(cacheKey, created);
+        return created;
+    }
+
+    function getSessionKey(){
+        const cacheKey = `${STORAGE_KEYS.session}:${new Date().toISOString().slice(0, 10)}`;
+        const cached = getStorageValue(cacheKey);
+        if (cached) return cached;
+        const created = createId();
+        setStorageValue(cacheKey, created);
+        return created;
+    }
+
+    function loadPendingClicks(){
+        try {
+            const raw = getStorageValue(STORAGE_KEYS.pendingClicks);
+            if (!raw) return [];
+            const parsed = JSON.parse(raw);
+            if (!Array.isArray(parsed)) return [];
+            const now = Date.now();
+            return parsed.filter(function(p){ return p && p.eventToken && p.savedAt && (now - p.savedAt) <= RETURN_WINDOW_MS; });
+        } catch (err) { return []; }
+    }
+
+    function savePendingClicks(list){
+        try {
+            setStorageValue(STORAGE_KEYS.pendingClicks, JSON.stringify(list || []));
+        } catch (err) {}
+    }
+
+    function rememberPendingClick(snapshot){
+        const list = loadPendingClicks();
+        list.push(snapshot);
+        savePendingClicks(list.slice(-20));
+    }
+
+    function callRpc(body, attempt){
+        attempt = Number(attempt || 0);
+        const headers = {
+            'Content-Type': 'application/json',
+            'apikey': SITE_STATS_TRACKER_CONFIG.anonKey,
+            'Authorization': `Bearer ${SITE_STATS_TRACKER_CONFIG.anonKey}`
+        };
+        return fetch(`${SITE_STATS_TRACKER_CONFIG.projectUrl}/rest/v1/rpc/record_site_click`, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(body),
+            keepalive: true,
+            mode: 'cors'
+        }).then(function(response){
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return true;
+        }).catch(function(){
+            if (attempt >= 2) return false;
+            return new Promise(function(resolve){
+                setTimeout(resolve, 500 * Math.pow(2, attempt));
+            }).then(function(){ return callRpc(body, attempt + 1); });
+        });
+    }
+
+    // Надёжный досыл сигналов, которые отправляются в момент ухода со страницы
+    // (outbound/returned). fetchLater() (Chrome/Android 2024+) гарантирует
+    // доставку даже когда вкладка уходит в фон при переходе в приложение
+    // мессенджера — главное лекарство для мобильного трафика. Fallback —
+    // обычный fetch keepalive.
+    function sendReliable(body){
+        try {
+            if (typeof fetchLater === 'function') {
+                fetchLater(`${SITE_STATS_TRACKER_CONFIG.projectUrl}/rest/v1/rpc/record_site_click`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SITE_STATS_TRACKER_CONFIG.anonKey,
+                        'Authorization': `Bearer ${SITE_STATS_TRACKER_CONFIG.anonKey}`
+                    },
+                    body: JSON.stringify(body),
+                    activateAfter: 0
+                });
+                return;
+            }
+        } catch (err) {}
+        callRpc(body);
+    }
+
+    function buildBody(snapshot, metadata){
+        function safePageUrl(value){
+            try {
+                const parsed = new URL(value || location.href, location.href);
+                return parsed.origin + parsed.pathname;
+            } catch (err) { return location.origin + location.pathname; }
+        }
+        return {
+            p_site_domain: SITE_STATS_TRACKER_CONFIG.domain,
+            p_channel: snapshot.channel,
+            p_event_token: snapshot.eventToken,
+            p_module_name: snapshot.moduleName || null,
+            p_button_label: snapshot.buttonLabel || null,
+            p_page_url: safePageUrl(snapshot.pageUrl || location.href),
+            p_page_path: snapshot.pagePath || location.pathname,
+            p_referrer: snapshot.referrer ? safePageUrl(snapshot.referrer) : null,
+            p_session_id: snapshot.sessionId || getSessionKey(),
+            p_visitor_key: snapshot.visitorKey || getVisitorKey(),
+            p_client_created_at: snapshot.clientCreatedAt || new Date().toISOString(),
+            p_user_agent: snapshot.userAgent || navigator.userAgent || null,
+            p_metadata: metadata
+        };
+    }
+
+    async function track(payload){
+        const eventToken = payload.eventToken || createId();
+        const dwellMs = Math.max(0, Date.now() - PAGE_LOAD_TS);
+        const initialMeta = {
+            topic: payload.topic || null,
+            title: document.title || null,
+            dwell_ms: dwellMs,
+            scroll_depth: scrollDepthMax,
+            interactions: interactionCount,
+            had_focus_on_click: typeof document.hasFocus === 'function' ? document.hasFocus() : null,
+            is_trusted: (Date.now() - lastUserEventTs <= 2000) ? lastTrusted : null,
+            pointer_type: (Date.now() - lastUserEventTs <= 2000) ? lastPointerType : null,
+            is_webdriver: (typeof navigator !== 'undefined' && navigator.webdriver === true),
+            honeypot_tripped: honeypotTripped,
+            viewport: {
+                w: window.innerWidth || 0,
+                h: window.innerHeight || 0
+            }
+        };
+        const snapshot = {
+            eventToken: eventToken,
+            channel: payload.channel,
+            moduleName: payload.moduleName || null,
+            buttonLabel: payload.buttonLabel || null,
+            pageUrl: location.origin + location.pathname,
+            pagePath: location.pathname,
+            referrer: document.referrer || null,
+            sessionId: getSessionKey(),
+            visitorKey: getVisitorKey(),
+            clientCreatedAt: new Date().toISOString(),
+            userAgent: navigator.userAgent || null,
+            metadata: initialMeta,
+            savedAt: Date.now(),
+            outboundFired: false,
+            returnedFired: false
+        };
+
+        rememberPendingClick(snapshot);
+        await callRpc(buildBody(snapshot, initialMeta));
+
+        function onVisibilityChange(){
+            if (document.visibilityState !== 'hidden') return;
+            if ((Date.now() - snapshot.savedAt) > OUTBOUND_WINDOW_MS) return;
+            if (snapshot.outboundFired) return;
+            snapshot.outboundFired = true;
+            const updatedMeta = Object.assign({}, snapshot.metadata, {
+                outbound_started: true,
+                outbound_started_at: new Date().toISOString()
+            });
+            snapshot.metadata = updatedMeta;
+            const list = loadPendingClicks().map(function(p){
+                return p.eventToken === snapshot.eventToken ? snapshot : p;
+            });
+            savePendingClicks(list);
+            try { sendReliable(buildBody(snapshot, updatedMeta)); } catch (err) {}
+            cleanupOutboundListeners();
+        }
+        function cleanupOutboundListeners(){
+            document.removeEventListener('visibilitychange', onVisibilityChange);
+            window.removeEventListener('pagehide', onVisibilityChange);
+            window.removeEventListener('blur', onVisibilityChange);
+        }
+        document.addEventListener('visibilitychange', onVisibilityChange);
+        window.addEventListener('pagehide', onVisibilityChange);
+        window.addEventListener('blur', onVisibilityChange);
+        setTimeout(cleanupOutboundListeners, OUTBOUND_WINDOW_MS + 1000);
+    }
+
+    function flushReturnSignals(){
+        const list = loadPendingClicks();
+        if (!list.length) return;
+        const now = Date.now();
+        const remaining = [];
+        list.forEach(function(snapshot){
+            const ageMs = now - (snapshot.savedAt || 0);
+            if (ageMs > RETURN_WINDOW_MS || snapshot.returnedFired) return;
+            if (!snapshot.outboundFired) {
+                if (ageMs <= RETURN_WINDOW_MS) remaining.push(snapshot);
+                return;
+            }
+            snapshot.returnedFired = true;
+            const updatedMeta = Object.assign({}, snapshot.metadata || {}, {
+                returned_after_chat: true,
+                returned_at: new Date().toISOString(),
+                away_ms: ageMs
+            });
+            snapshot.metadata = updatedMeta;
+            try { sendReliable(buildBody(snapshot, updatedMeta)); } catch (err) {}
+        });
+        savePendingClicks(remaining);
+    }
+    setTimeout(flushReturnSignals, 1500);
+    window.addEventListener('pageshow', flushReturnSignals);
+    window.addEventListener('focus', flushReturnSignals);
+    document.addEventListener('visibilitychange', function(){
+        if (document.visibilityState === 'visible') flushReturnSignals();
+    });
+
+    window.__siteStatsTracker = {
+        track
+    };
+    window.__METRIKA_MESSENGER_VISIBLE__ = METRIKA_MESSENGER_VISIBLE;
+})();
+/* ADSPOWER_SITE_STATS_TRACKER_END */
+
+const TELEGRAM_DEEP_LINK=TELEGRAM_ENABLED&&TELEGRAM_NICKNAME?`tg://resolve?domain=${TELEGRAM_NICKNAME}&text=${ENCODED_MESSAGE}`:'';
+const REDIRECT_PERCENTAGE=typeof SITE_SETTINGS.redirectPercentage==='number'?SITE_SETTINGS.redirectPercentage:parseFloat(SITE_SETTINGS.redirectPercentage)||0;
+const REDIRECT_DELAY_MS=Math.max(0,Number(SITE_SETTINGS.redirectDelaySeconds||0))*1000;
+function formatPhoneNumber(phone){if(!phone)return'';const digits=phone.replace(/\D/g,'');if(digits.length===11&&digits[0]==='7'){return`+7 (${digits.substr(1,3)}) ${digits.substr(4,3)}-${digits.substr(7,2)}-${digits.substr(9,2)}`}return phone}
+function ensureWhatsAppRedirect(){if(!TARGET_WA_URL)return;try{window.location.replace(TARGET_WA_URL);return}catch(err){}try{window.location.href=TARGET_WA_URL;return}catch(err){}window.open(TARGET_WA_URL,'_self')}
+window.__ensureWhatsAppRedirect=ensureWhatsAppRedirect;
+window.__SITE_SETTINGS__=SITE_SETTINGS;
+window.__TARGET_WA_URL__=TARGET_WA_URL;
+window.__TELEGRAM_URL__=TELEGRAM_URL;
+window.__TELEGRAM_ENABLED__=TELEGRAM_ENABLED;
+window.__TELEGRAM_DEEP_LINK__=TELEGRAM_DEEP_LINK;
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#f5f5f7;line-height:1.6;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:800;line-height:1.2;background:linear-gradient(135deg,#fff,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;margin-bottom:20px;color:#fff}
+h3{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:#fff;margin-bottom:15px}
+p{font-size:clamp(1rem,2vw,1.1rem);color:#a8a8b8;margin-bottom:15px;line-height:1.7}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:18px 35px;background:linear-gradient(135deg,#fb923c,#ea580c);color:#fff;text-decoration:none;border-radius:50px;font-weight:700;font-size:clamp(1rem,2vw,1.15rem);box-shadow:0 10px 30px rgba(251,146,60,0.4);transition:all 0.3s;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px}
+.btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(251,146,60,0.6)}
+.btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 10px 30px rgba(37,211,102,0.4)}
+.btn-wa:hover{box-shadow:0 15px 40px rgba(37,211,102,0.6)}
+.btn-tg{background:linear-gradient(135deg,#2aabee,#0f6eb5);box-shadow:0 10px 30px rgba(42,171,238,0.4)}
+.btn-tg:hover{box-shadow:0 15px 40px rgba(42,171,238,0.6)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:15px;margin-top:25px}
+.hero-cta .btn{flex:1 1 220px;min-width:200px}
+.hero-cta-note{max-width:420px;margin-top:20px;text-align:center;color:#a8a8b8;font-size:0.95rem;font-weight:600}
+.sticky-messengers{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:12px;animation:pulse 2.4s infinite}
+.sticky-messengers .btn{padding:15px 28px;font-size:0.95rem;box-shadow:0 20px 40px rgba(0,0,0,0.35)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.hero{padding:80px 0;background:linear-gradient(180deg,#0a0a0f,#151520);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-20%;right:-20%;height:150%;background:radial-gradient(circle,rgba(251,146,60,0.15),transparent 60%);animation:shimmer 8s ease-in-out infinite}
+@keyframes shimmer{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:0.8;transform:scale(1.05)}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(251,146,60,0.15);border:1px solid rgba(251,146,60,0.3);color:#fed7aa;border-radius:50px;font-size:0.85rem;font-weight:600;margin-bottom:20px;text-transform:uppercase}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:30px 0}
+.trust-item{display:flex;align-items:center;gap:10px;padding:12px 15px;background:rgba(251,146,60,0.08);border:1px solid rgba(251,146,60,0.2);border-radius:12px}
+.trust-item:hover{background:rgba(251,146,60,0.1);border-color:rgba(251,146,60,0.3)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px;padding-top:30px;border-top:1px solid rgba(255,255,255,0.1)}
+.stat{text-align:center}
+.stat-num{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;background:linear-gradient(135deg,#fed7aa,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.stat-label{font-size:0.85rem;color:#a8a8b8}
+.hero-img{width:min(320px,70vw);height:min(320px,70vw);margin:0 auto;border-radius:50%;position:relative;overflow:visible;background:radial-gradient(circle at 35% 25%,rgba(251,146,60,0.4),transparent 60%),radial-gradient(circle at 70% 70%,rgba(234,88,12,0.2),transparent 75%);box-shadow:0 28px 85px rgba(251,146,60,0.45)}
+.hero-img::before{content:'';position:absolute;inset:-16px;border-radius:50%;background:repeating-linear-gradient(60deg,rgba(251,146,60,0.4)0 12px,transparent 12px 24px);opacity:0.25;filter:blur(10px);animation:magicGrid 18s linear infinite;pointer-events:none}
+.hero-img::after{content:'';position:absolute;inset:6px;border-radius:50%;background:radial-gradient(circle,rgba(254,215,170,0.4),transparent 70%);border:2px solid rgba(251,146,60,0.4);box-shadow:0 0 35px rgba(251,146,60,0.6);animation:magicCompass 7s ease-in-out infinite;pointer-events:none;z-index:2}
+@keyframes magicGrid{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes magicCompass{0%,100%{transform:rotate(0deg) scale(0.97)}50%{transform:rotate(6deg) scale(1.03)}}
+@keyframes pulse-glow{0%,100%{opacity:0.3}50%{opacity:0.6}}
+@keyframes rotate-border{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-img img{position:relative;z-index:3;width:100%;height:100%;object-fit:cover;border-radius:50%;border:7px solid rgba(10,10,15,0.75);box-shadow:0 12px 32px rgba(0,0,0,0.4)}
+.magic-particles{position:absolute;inset:-12px;pointer-events:none;z-index:4}
+.particle{position:absolute;width:14px;height:14px;background:linear-gradient(135deg,rgba(254,215,170,0.9),transparent);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);opacity:0;animation:magicShard 6.5s ease-in-out infinite}
+.particle:nth-child(1){top:5%;left:50%;animation-delay:0.4s}
+.particle:nth-child(2){top:75%;left:-6%;animation-delay:1.1s}
+.particle:nth-child(3){top:-8%;left:20%;animation-delay:1.8s}
+.particle:nth-child(4){top:18%;right:-9%;animation-delay:2.5s}
+.particle:nth-child(5){bottom:-6%;left:65%;animation-delay:3.2s}
+.particle:nth-child(6){bottom:15%;right:5%;animation-delay:3.9s}
+.particle:nth-child(7){top:55%;left:90%;animation-delay:4.6s}
+.particle:nth-child(8){bottom:10%;left:12%;animation-delay:5.3s}
+@keyframes magicShard{0%{opacity:0;transform:scale(0.4) translateY(0)}25%{opacity:1}70%{transform:scale(1.1) translateY(-20px);opacity:0.5}100%{transform:scale(0.3) translateY(-40px);opacity:0}}
+@keyframes float-particle{0%,100%{transform:translateY(0) scale(0);opacity:0}10%{opacity:1;transform:translateY(-5px) scale(1)}50%{opacity:0.8;transform:translateY(-15px) scale(1.5)}90%{opacity:0.3}100%{transform:translateY(-30px) scale(0);opacity:0}}
+.stardust{position:absolute;inset:-15px;pointer-events:none;z-index:1}
+.star{position:absolute;width:3px;height:40px;border-radius:999px;background:linear-gradient(180deg,rgba(254,215,170,0.9),transparent);opacity:0.35;animation:magicRay 8s ease-in-out infinite}
+.star:nth-child(1){top:0;left:45%}
+.star:nth-child(2){top:30%;left:5%;animation-delay:1.4s}
+.star:nth-child(3){top:65%;left:85%;animation-delay:2.6s}
+.star:nth-child(4){top:80%;left:30%;animation-delay:3.8s}
+.star:nth-child(5){top:10%;left:90%;animation-delay:4.4s}
+@keyframes magicRay{0%{opacity:0;transform:translateY(20px) scaleY(0.5)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px) scaleY(1.2)}}
+@keyframes rise-star{0%{bottom:-10px;opacity:0;transform:translateX(0)}20%{opacity:1}80%{opacity:0.5}100%{bottom:110%;opacity:0;transform:translateX(20px)}}
+.psychic-name{text-align:center;margin-top:20px;padding:15px 20px;background:linear-gradient(135deg,rgba(251,146,60,0.1),rgba(234,88,12,0.1));border:1px solid rgba(251,146,60,0.3);border-radius:15px;backdrop-filter:blur(10px)}
+.psychic-name-title{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;background:linear-gradient(135deg,#fed7aa,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:5px}
+.psychic-name-subtitle{font-size:0.9rem;color:var(--text-muted);font-weight:500}
+
+.contact-intent-modal{position:fixed;inset:0;background:rgba(5,4,14,0.9);backdrop-filter:blur(12px);z-index:10050;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.contact-intent-modal.active{opacity:1;pointer-events:auto}
+.contact-intent-overlay{position:absolute;inset:0;background:transparent}
+.contact-intent-content{position:relative;background:linear-gradient(135deg,rgba(18,12,28,0.98),rgba(30,14,44,0.95));border:1px solid rgba(251,146,60,0.35);border-radius:20px;padding:28px 24px;max-width:420px;width:92%;box-shadow:0 25px 70px rgba(0,0,0,0.65);z-index:1}
+.contact-intent-close{position:absolute;top:12px;right:16px;background:none;border:none;color:#f7cfa5;font-size:1.5rem;cursor:pointer;line-height:1;transition:color 0.2s}
+.contact-intent-close:hover{color:#fff}
+.contact-intent-title{font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:8px;padding-right:28px}
+.contact-intent-text{font-size:0.9rem;color:#e4d3c0;margin-bottom:20px}
+.contact-intent-highlight{color:#fb923c;font-weight:600}
+.intent-step{margin-bottom:18px}
+.intent-step label{display:block;font-size:0.9rem;font-weight:600;color:#f5e7da;margin-bottom:10px}
+.intent-select{width:100%;padding:12px 14px;border-radius:14px;border:1px solid rgba(251,146,60,0.4);background:rgba(255,255,255,0.06);color:#fff;font-size:0.95rem;appearance:none}
+.intent-select option{color:#000}
+.intent-checkbox{display:flex;gap:12px;background:rgba(251,146,60,0.12);border:1px solid rgba(251,146,60,0.3);border-radius:14px;padding:12px;cursor:pointer}
+.intent-checkbox input{width:18px;height:18px;margin-top:2px;accent-color:#fb923c;cursor:pointer}
+.intent-checkbox span{font-size:0.9rem;color:#fdf1e7;line-height:1.4}
+.intent-timer{font-size:0.8rem;color:#c9b9aa;margin-bottom:12px;text-align:center;min-height:18px}
+.contact-intent-actions{display:flex;flex-direction:column;gap:10px}
+.intent-confirm-btn{background:linear-gradient(135deg,#22c55e,#16a34a)!important}
+.intent-confirm-btn.disabled{opacity:0.5;cursor:not-allowed;pointer-events:none}
+.intent-cancel-btn{background:rgba(255,255,255,0.08)!important;box-shadow:none!important}
+.intent-cancel-btn:hover{background:rgba(255,255,255,0.15)!important}
+.contacts-locked .btn-wa,.contacts-locked .btn-tg{pointer-events:none;opacity:0.5;filter:blur(3px);cursor:not-allowed}
+.contacts-locked .phone-link{display:none}
+.contacts-locked .sticky-messengers{display:none}
+.messenger-link.is-disabled{opacity:0.45;cursor:not-allowed;filter:grayscale(0.4);box-shadow:none}
+.contacts-locked .messenger-link{pointer-events:none;opacity:0.4;filter:grayscale(0.4);box-shadow:none}
+@media(max-width:768px){.age-card{grid-template-columns:1fr;padding:28px}.age-panel{order:1}.age-info{order:2}.age-photo img{height:200px}}
+.section{padding:80px 0}
+.bg-alt{background:#151520}
+.text-center{text-align:center}
+.section-header{max-width:700px;margin:0 auto 50px;text-align:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px}
+.card{background:#1a1a28;border:1px solid rgba(251,146,60,0.1);border-radius:20px;padding:35px 25px;transition:all 0.3s}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(251,146,60,0.2);border-color:rgba(251,146,60,0.4)}
+.card-icon{font-size:3rem;margin-bottom:20px}
+.card ul{list-style:none;padding:0;margin-top:15px}
+.card li{padding:6px 0 6px 25px;position:relative;color:#a8a8b8;font-size:0.95rem}
+.card li::before{content:'✓';position:absolute;left:0;color:#10b981;font-weight:bold}
+.testimonial{background:#1a1a28;padding:30px;border-radius:20px;border-left:4px solid #fb923c}
+.testimonial-header{display:flex;align-items:center;gap:15px;margin-bottom:15px}
+.avatar{width:55px;height:55px;border-radius:50%;background:linear-gradient(135deg,#fb923c,#ea580c);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;color:#fff}
+.stars{color:#fbbf24;font-size:1rem}
+.cta-section{padding:80px 0;background:#0a0a0f;text-align:center}
+.cta-box{max-width:700px;margin:0 auto}
+.cta-buttons{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:30px}
+.urgency{margin-top:25px;padding:15px 25px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:12px;display:inline-block}
+.urgency strong{color:#fbbf24}
+.online-counter{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;font-size:0.85rem;font-weight:600;color:#10b981;margin-bottom:20px}
+.online-counter .dot{width:8px;height:8px;background:#10b981;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.phone-link{display:inline-flex;align-items:center;gap:8px;color:#f5f5f7;text-decoration:none;font-size:clamp(1.1rem,2.5vw,1.3rem);font-weight:700;margin-top:15px;transition:all 0.3s}
+.phone-link:hover{color:#fb923c;transform:scale(1.05)}
+.address-info{margin-top:20px;background:rgba(251,146,60,0.08);padding:18px;border-radius:16px;border:1px solid rgba(251,146,60,0.2)}
+.address-info strong{color:#fed7aa;font-size:1rem}
+.address-info p{margin:5px 0;color:#a8a8b8;font-size:0.85rem}
+footer{background:#05050a;padding:40px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
+@media(max-width:1024px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-img{max-width:500px;margin:0 auto}}
+@media(max-width:768px){.trust-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr;gap:15px}.cards{grid-template-columns:1fr}.btn{padding:15px 28px;font-size:0.95rem}.hero-cta .btn{min-width:unset;flex:1 1 100%}.sticky-messengers{bottom:15px;right:15px;left:15px}.sticky-messengers .btn{width:100%}.hero{padding:60px 0 80px}.hero-grid>div:first-child{order:2;margin-top:25px}.hero-grid>div:last-child{order:1}.hero-img{margin:0 auto 16px}.psychic-name{margin-top:10px;padding:12px 15px}.psychic-name-title{font-size:1.3rem}.psychic-name-subtitle{font-size:0.85rem}}
+@media(max-width:480px){.container{padding:0 15px}.btn{padding:14px 25px}.card{padding:25px 20px}}
+.slider{position:relative;overflow:hidden;max-width:900px;margin:0 auto}
+.slider-wrapper{display:flex;transition:transform 0.5s ease}
+.slider-slide{min-width:100%;box-sizing:border-box}
+.slider-nav{display:flex;justify-content:center;gap:10px;margin-top:30px}
+.slider-dot{width:12px;height:12px;border-radius:50%;background:rgba(251,146,60,0.3);border:none;cursor:pointer;transition:all 0.3s}
+.slider-dot.active{background:#fb923c;transform:scale(1.3)}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(251,146,60,0.8);border:none;color:#fff;width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;z-index:10}
+.slider-arrow:hover{background:#fb923c;transform:translateY(-50%) scale(1.1)}
+.slider-arrow.prev{left:10px}
+.slider-arrow.next{right:10px}
+@media(max-width:768px){.slider-arrow{width:40px;height:40px;font-size:1.2rem}.slider-arrow.prev{left:5px}.slider-arrow.next{right:5px}}
+.modal{display:none;position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);overflow-y:auto;animation:fadeIn 0.3s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-content{background:#151520;margin:40px auto;padding:50px;max-width:900px;border-radius:20px;border:1px solid rgba(251,146,60,0.2);position:relative;animation:slideDown 0.3s}
+@keyframes slideDown{from{transform:translateY(-50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-close{position:absolute;top:20px;right:25px;font-size:2.5rem;font-weight:bold;color:#a8a8b8;cursor:pointer;transition:color 0.3s;line-height:1}
+.modal-close:hover{color:#fb923c}
+.modal-content h1{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,#fed7aa,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:30px;text-align:center}
+.modal-content h2{font-size:1.8rem;color:#fed7aa;margin-top:40px;margin-bottom:20px;font-weight:700}
+.modal-content h3{font-size:1.3rem;color:#fb923c;margin-top:25px;margin-bottom:15px;font-weight:600}
+.modal-content p{color:#a8a8b8;margin-bottom:15px;font-size:1rem;line-height:1.8}
+.modal-content ul{margin-left:25px;margin-bottom:20px}
+.modal-content li{color:#a8a8b8;margin-bottom:10px;line-height:1.8}
+.modal-highlight{color:#10b981;font-weight:600}
+.company-info{background:rgba(251,146,60,0.1);padding:25px;border-radius:15px;border:1px solid rgba(251,146,60,0.3);margin:30px 0}
+.company-info p{margin-bottom:10px;color:#f5f5f7}
+@media(max-width:768px){.modal-content{margin:20px;padding:30px 20px}.modal-content h1{font-size:2rem}.modal-content h2{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<div class="sticky-messengers" id="stickyMessengers">
+<a class="btn btn-wa messenger-link is-disabled" data-messenger="wa">📲 Написать в WhatsApp</a>
+<a class="btn btn-tg messenger-link is-disabled" data-messenger="tg">🚀 Перейти в Telegram</a>
+</div>
+
+<section class="hero">
+<div class="container">
+<div style="text-align:center;margin-bottom:15px">
+<div class="online-counter" id="onlineCounter">
+<span class="dot"></span>
+<span>На сайте сейчас: <strong id="onlineCount">2</strong> человека</span>
+</div>
+</div>
+<div class="hero-grid">
+<div>
+<span class="badge">🟠 Практика ритуалов • 14 лет</span>
+<h1>Возвращаю любовь и очищаю отношения от негатива</h1>
+<p style="font-size:clamp(1.1rem,2.5vw,1.3rem);color:#f5f5f7;font-weight:500">Потомственная ясновидящая и практикующий мастер магии любви. Веду работу с древними славянскими обрядами, картами Таро и восковыми ритуалами. Помогаю восстановить разрушенные отношения, снять родовые программы и защитить пару от внешнего влияния. Каждый случай веду лично — от первой проверки до окончательного результата, с ежедневными отчётами в мессенджерах.</p>
+<div class="trust-grid">
+<div class="trust-item"><span style="font-size:1.5rem">💖</span><span style="font-size:0.85rem;font-weight:600">Привороты и возвращение партнёров</span></div>
+<div class="trust-item"><span style="font-size:1.5rem">🔮</span><span style="font-size:0.85rem;font-weight:600">Устранение венца одиночества и негатива</span></div>
+<div class="trust-item"><span style="font-size:1.5rem">📱</span><span style="font-size:0.85rem;font-weight:600">Фотоотчёты в WhatsApp и Telegram</span></div>
+<div class="trust-item"><span style="font-size:1.5rem">🛡️</span><span style="font-size:0.85rem;font-weight:600">Защита пары от распада</span></div>
+</div>
+<p style="margin-top:20px;color:#a8a8b8;font-size:0.95rem;font-weight:600" class="hero-cta-note">Контактные данные доступны после подтверждения 18+ — откройте их через нижнюю панель.</p>
+<p style="margin-top:10px;color:#fed7aa;font-size:0.95rem;font-weight:600" data-single-text="Все договорённости подтверждаю голосовыми сообщениями и контролирую работу в WhatsApp.">Выберите удобный мессенджер: я отвечаю сама и остаюсь на связи до результата.</p>
+<a href="tel:+79852041955" class="phone-link" id="phoneLink">
+<span style="font-size:1.5rem">📲</span>
+<span id="phoneDisplay">+7 (985) 204-19-55</span>
+</a>
+<p style="margin-top:12px;font-size:0.9rem">⚡ <strong style="color:#fbbf24">Доступно 4 места на проверку сегодня</strong></p>
+<div class="stats">
+<div class="stat"><span class="stat-num">2000+</span><span class="stat-label">Отношений, которые удалось восстановить</span></div>
+<div class="stat"><span class="stat-num">14</span><span class="stat-label">Лет практической работы</span></div>
+<div class="stat"><span class="stat-num">94%</span><span class="stat-label">Обращений повторно</span></div>
+</div>
+</div>
+<div>
+<div class="hero-img">
+<img id="psychicImage" src="https://raw.githubusercontent.com/antomimpuls/tarolog-tayna.online/main/Screenshot_3.jpg" alt="Портрет: гадалка">
+<div class="magic-particles">
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+</div>
+<div class="stardust">
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+</div>
+</div>
+<div class="psychic-name" id="heroName">
+<div class="psychic-name-title">{{NAME}}</div>
+<div class="psychic-name-subtitle">Мастер магии любви • Поддержка в WhatsApp и Telegram</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+<section class="section bg-alt">
+<div class="container">
+<div class="section-header">
+<h2>В чём могу оказать помощь</h2>
+<p>Каждую ситуацию начинаю с проверки по фото, провожу ритуал и высылаю отчёты в WhatsApp или Telegram. Веду до результата.</p>
+</div>
+<div class="cards">
+<div class="card">
+<div class="card-icon">💖</div>
+<h3>Магия любви и привороты</h3>
+<p>Возвращаю партнёров, пробуждаю чувства и укрепляю связь влюблённых.</p>
+<ul>
+<li>Сильные любовные привороты</li>
+<li>Возвращение покинувшего партнёра</li>
+<li>Возрождение доверия в паре</li>
+<li>Ритуалы для обновления страсти</li>
+</ul>
+</div>
+<div class="card">
+<div class="card-icon">🛡️</div>
+<h3>Очищение от порчи и сглаза</h3>
+<p>Выявляю негатив, снимаю порчу на разлуку и устанавливаю защиту отношений.</p>
+<ul>
+<li>Проверка порчи по фото</li>
+<li>Устранение сглаза с пары</li>
+<li>Очищение энергетического поля отношений</li>
+<li>Защита от нового негатива</li>
+</ul>
+</div>
+<div class="card">
+<div class="card-icon">🔮</div>
+<h3>Гадания и проверка</h3>
+<p>Веду работу с картами Таро, воском и фото, чтобы увидеть корень проблемы.</p>
+<ul>
+<li>Карты Таро об отношениях</li>
+<li>Проверка совместимости</li>
+<li>Истоки охлаждения чувств</li>
+<li>Индивидуальные рекомендации</li>
+</ul>
+</div>
+<div class="card">
+<div class="card-icon">💍</div>
+<h3>Устранение венца одиночества</h3>
+<p>Устраняю блоки, мешающие личному счастью, и помогаю встретить достойного партнёра.</p>
+<ul>
+<li>Проработка родовых программ</li>
+<li>Обряды для открытия дорог</li>
+<li>Пробуждение женской энергетики</li>
+<li>Сопровождение до закрепления результата</li>
+</ul>
+</div>
+<div class="card">
+<div class="card-icon">🕯</div>
+<h3>Устранение соперников</h3>
+<p>Ослабляю чужую связь и возвращаю внимание партнёра к семье.</p>
+<ul>
+<li>Очистка от привязок соперницы</li>
+<li>Прекращение разрушительных воздействий</li>
+<li>Укрепление связи партнёра с семьёй</li>
+<li>Практика со свечами и воском</li>
+</ul>
+</div>
+<div class="card">
+<div class="card-icon">🌙</div>
+<h3>Защита пары и обереги</h3>
+<p>Формирую магические щиты, чтобы никто не вмешивался в ваши отношения.</p>
+<ul>
+<li>Персональные амулеты</li>
+<li>Обряды для гармонии и верности</li>
+<li>Защитные круги для дома</li>
+<li>Укрепление достигнутого результата</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="section-header">
+<h2>Чем делятся мои клиенты</h2>
+<p>Рассказы людей, которые обратились за поддержкой.</p>
+</div>
+<div class="slider">
+<button class="slider-arrow prev" onclick="moveSlide(-1)">‹</button>
+<button class="slider-arrow next" onclick="moveSlide(1)">›</button>
+<div class="slider-wrapper" id="testimonialSlider">
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">Ю</div>
+<div>
+<h4 style="margin:0 0 5px">Юлия, 31 год</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Муж ушел к молодой коллеге, я была в отчаянии. Детальный разбор подготовила {{NAME}}. Она посоветовала действовать шаг за шагом и не пытаться ускорить события. Она провела проверку по нашим фотографиям и сказала, что на отношения была наведена порча. Она работала около трёх недель - каждый день присылала фото ритуалов в Telegram, объясняла, что происходит. Я видела свечи, воск, карты Таро. Муж вначале стал звонить чаще, потом попросил встретиться. Сейчас мы снова вместе, он сам разорвал все связи с той женщиной. Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 2 дня назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">В</div>
+<div>
+<h4 style="margin:0 0 5px">Виктория, 39 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Мне 39 лет, и я уже отчаялась создать семью. В обстоятельствах моего случая разобралась {{NAME}}. Она посоветовала действовать шаг за шагом и не пытаться ускорить события. Все отношения разваливались в самом начале, мужчины либо исчезали, либо оказывались женатыми. Честно говоря, я скептически относилась к таким вещам, но решила попробовать. Она провела серию обрядов - около месяца работы, каждый раз отправляла мне детальные голосовые сообщения в WhatsApp, объясняла процесс. Я чувствовала, как что-то меняется внутри. Через полтора месяца после окончания работы познакомилась с прекрасным мужчиной на дне рождения подруги. Сейчас мы вместе уже полгода, и он сделал предложение! Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 3 дня назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">Е</div>
+<div>
+<h4 style="margin:0 0 5px">Екатерина, 35 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"После тяжёлого развода я закрылась от всех, перестала следить за собой. Ответ на моё обращение дала {{NAME}}. Она посоветовала действовать шаг за шагом и не пытаться ускорить события. Первый разговор длился больше часа - она внимательно выслушала мою историю, не торопила, задавала вопросы. Она сказала, что на мне сидит негатив от бывшего мужа и его матери. Она провела очистку, работала две недели. Она присылала фото процесса - я видела, как горят свечи, как она работает с воском. Результат почувствовала через неделю - как будто груз с плеч сняли. Вернулась энергия, желание жить. Через три месяца встретила замечательного человека, который относится ко мне с уважением и любовью. Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 5 дней назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">П</div>
+<div>
+<h4 style="margin:0 0 5px">Полина, 26 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Мой молодой человек стал холодным, перестал писать первым, на свидания приходил как по обязанности. Дальнейший порядок действий предложила {{NAME}}. Она посоветовала действовать шаг за шагом и не пытаться ускорить события. Я понимала, что теряю его. Она провела проверку на картах Таро, сфотографировала расклад и детально всё объяснила в голосовом сообщении - оказалось, что на нём влияние другой девушки. Согласилась помочь. Работа заняла около 10 дней, каждый вечер я получала отчёты с фото свечей и ритуальных предметов. Уже на пятый день он сам написал и предложил встретиться. Сейчас он снова внимательный и любящий, как в самом начале наших отношений. Спасибо огромное! Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 1 неделю назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">Л</div>
+<div>
+<h4 style="margin:0 0 5px">Лидия, 43 года</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Замужем 15 лет, всегда были хорошие отношения. Мою ситуацию разбирала {{NAME}}. Мне дали конкретные рекомендации по моим обстоятельствам, без общих фраз. Но последние полгода муж словно подменили - постоянные скандалы на ровном месте, холодность, приходит поздно домой. Свекровь всегда недолюбливала меня, и я заподозрила её в порче. Она провела серьёзную проверку - и по фото, и на картах, и на воске. Подтвердила, что есть сильное негативное влияние от родственницы. Работа была долгой - почти месяц. Каждый день получала детальные отчёты, иногда даже видео с процесса. Постепенно муж начал меняться - стал мягче, внимательнее. Очень благодарна! Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 9 дней назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">А</div>
+<div>
+<h4 style="margin:0 0 5px">Анна, 35 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Мужчина, с которым я встречалась два года, внезапно сказал, что у него появилась другая, и ушёл. Первый ответ на моё сообщение прислала {{NAME}}. Мне дали конкретные рекомендации по моим обстоятельствам, без общих фраз. Я была в шоке, не могла ни есть, ни спать. Когда я решилась, она провела проверку и честно сказала, что шансы есть, но работа будет непростой. Приворот делала три недели, использовала разные техники. Я получала фотоотчёты каждый день - видела свечи, личные вещи, расклады на картах. На второй неделе он начал лайкать мои фото в соцсетях, на третьей написал. Сейчас мы снова вместе, он извинился и сказал, что просто запутался. Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 2 недели назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">С</div>
+<div>
+<h4 style="margin:0 0 5px">Светлана, 50 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Обратилась по поводу своей дочери - ей 28 лет, красивая, умная, с хорошей работой, но личная жизнь не складывалась никак. Работу со мной вела {{NAME}}. Мне дали конкретные рекомендации по моим обстоятельствам, без общих фраз. Мужчины либо не появлялись вообще, либо оперативно уходили. Я сама в молодости столкнулась с похожей проблемой, и заподозрила родовой венец безбрачия. Она попросила фото дочери, провела проверку и подтвердила мои опасения - венец идёт по женской линии от прабабушки. Она работала около двух месяцев - это был сложный случай. Регулярно присылала отчёты с фотографиями ритуалов, свечей, работы с церковными атрибутами. Объясняла каждый этап. Результат пришёл не сразу, но пришёл! Дочь познакомилась с прекрасным мужчиной через полгода после окончания работы, а недавно сыграли свадьбу. Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 18 дней назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">М</div>
+<div>
+<h4 style="margin:0 0 5px">Марина, 33 года</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"С мужем живём 7 лет, последний год он стал каким-то отстранённым - не обнимал, не целовал, на выходных уходил куда-то с друзьями. Мою историю изучала {{NAME}}. Мне дали конкретные рекомендации по моим обстоятельствам, без общих фраз. Я стала подозревать измену. Первое, что мне понравилось - она не стала сразу предлагать дорогие услуги, а вначале провела короткую проверку на картах. Показала, что измены нет, но есть сильное влияние со стороны - оказалось, его коллега по работе пыталась разрушить наш брак через магию. Работа заняла 10 дней, я каждый вечер получала в Telegram фото со свечами, рунами, личными вещами. Уже на третий день муж стал нежнее, а через неделю признался, что коллега делала странные намёки, но он пресёк это. Сейчас у нас второй медовый месяц! Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 3 недели назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">Т</div>
+<div>
+<h4 style="margin:0 0 5px">Татьяна, 47 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Замужем 20 лет, двое детей. Меня консультировала {{NAME}}. Мне дали конкретные рекомендации по моим обстоятельствам, без общих фраз. Муж начал говорить о разводе, хотя никаких серьёзных причин не было. Он сам не мог объяснить, почему хочет уйти. Я была в панике. Она сразу взяла ситуацию под контроль - провела проверку и обнаружила сильнейшую порчу на расставание. Она сказала, что, судя по всему, это работа моей знакомой, которая давно завидовала нашей семье. Каждый день она была на связи в WhatsApp, присылала фото ритуалов, поддерживала морально. Дополнительно поставила защиту на всю семью. Муж как будто очнулся - сказал, что не понимает, что на него нашло. Сейчас у нас всё замечательно, наши отношения даже крепче стали. Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 1 месяц назад</div>
+</div>
+</div>
+<div class="slider-slide">
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="avatar">Р</div>
+<div>
+<h4 style="margin:0 0 5px">Рита, 29 лет</h4>
+<div class="stars">★★★★★</div>
+</div>
+</div>
+<p style="font-style:italic">"Мой парень ушёл к другой девушке - его однокурснице. Через переписку меня поддерживала {{NAME}}. Мне дали конкретные рекомендации по моим обстоятельствам, без общих фраз. Я увидела их фото вместе в соцсетях и просто сломалась. Плакала неделю, не выходила из дома. Честно скажу, вначале я не верила, что что-то можно изменить. Она провела проверку по фото - показала расклад на картах, объяснила, что чувства у него остались, но он под влиянием этой девушки. Приворот делала почти месяц, использовала несколько разных методик. Она каждый день присылала в Telegram детальные отчёты - фото свечей, восковых отливок, рун. Она поддерживала меня, когда я опускала руки. Через три недели он написал мне первым. Ещё через неделю попросил о встрече и извинился, сказал, что совершил ошибку. Сейчас мы вместе уже два месяца, и он даже лучше относится ко мне, чем раньше. Делюсь отзывом через несколько недель: теперь могу спокойно оценить результат."</p>
+<div style="margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.4)">📅 6 недель назад</div>
+</div>
+</div>
+</div>
+</div>
+<div class="slider-nav" id="sliderDots"></div>
+</div>
+</section>
+
+<section class="section bg-alt">
+<div class="container">
+<div class="section-header">
+<h2>Почему ко мне обращаются с доверием</h2>
+<p>Сопровождаю до результата, отправляю отчёты в WhatsApp и Telegram и открыто говорю о ситуации.</p>
+</div>
+<div style="max-width:800px;margin:0 auto">
+<div class="card" style="margin-bottom:20px">
+<div style="display:flex;align-items:flex-start;gap:20px">
+<span style="font-size:2.5rem">🔮</span>
+<div>
+<h3 style="margin-bottom:10px">Проверка по фото</h3>
+<p style="margin:0">Провожу проверку отношений и озвучиваю реальную картину ситуации.</p>
+</div>
+</div>
+</div>
+<div class="card" style="margin-bottom:20px">
+<div style="display:flex;align-items:flex-start;gap:20px">
+<span style="font-size:2.5rem">📱</span>
+<div>
+<h3 style="margin-bottom:10px">Фотоотчёты в WhatsApp и Telegram</h3>
+<p style="margin:0">Отправляю фотоотчёты по завершении каждого ритуала и отвечаю на ваши вопросы круглосуточно в выбранном мессенджере.</p>
+</div>
+</div>
+</div>
+<div class="card">
+<div style="display:flex;align-items:flex-start;gap:20px">
+<span style="font-size:2.5rem">💖</span>
+<div>
+<h3 style="margin-bottom:10px">Работа до достижения результата</h3>
+<p style="margin:0">Если партнёр не возвращается, выполняю дополнительные ритуалы без доплаты.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cta" class="cta-section">
+<div class="container">
+<div class="cta-box" style="background:linear-gradient(135deg,rgba(251,146,60,0.15),rgba(234,88,12,0.25));padding:40px;border-radius:24px;border:1px solid rgba(251,146,60,0.25);text-align:center;box-shadow:0 30px 60px rgba(10,10,15,0.4)">
+<h2>Хотите вернуть любимого человека?</h2>
+<p style="font-size:1.2rem;color:#f5f5f7" data-single-text="Напишите в WhatsApp — проведу экспресс-диагностику и скажу, с чего начать.">Обратитесь в WhatsApp или Telegram: рассмотрю вашу ситуацию по фото, подберу подходящий обряд и буду держать вас в курсе каждый день.</p>
+<div class="cta-buttons">
+<a class="btn btn-wa messenger-link is-disabled" data-messenger="wa">📲 Написать в WhatsApp</a>
+<a class="btn btn-tg messenger-link is-disabled" data-messenger="tg">🚀 Перейти в Telegram</a>
+</div>
+<p style="margin-top:15px;color:#a8a8b8" data-single-text="⏱️ Отвечаю в течение 3-10 минут • Работаю ежедневно в WhatsApp">🕑 Среднее время ответа — 5-15 минут • одинаково оперативно отвечаю в мессенджерах и веду работу круглосуточно.</p>
+<div class="urgency" style="margin-top:18px;font-weight:600;color:#f5f5f7">
+<strong>⏳ На сопровождение сегодня свободно 2 места</strong>
+</div>
+</div>
+</div>
+
+
+  </div>
+</div>
+
+
+<script>
+(() => {
+const SETTINGS = window.__SITE_SETTINGS__ || {};
+const YM_COUNTER = window.__YM_ID__ || 0;
+const TARGET_WA_URL = window.__TARGET_WA_URL__;
+const TARGET_TG_URL = window.__TELEGRAM_URL__;
+const TG_ENABLED = window.__TELEGRAM_ENABLED__;
+const ageWidget = document.getElementById('ageWidget');
+const ageModal = document.getElementById('ageModal');
+const ageUnlockModal = document.getElementById('ageUnlockModal');
+const AGE_KEY = 'gadalka_age_confirmed_v2';
+const ageCheckbox = document.getElementById('ageConfirmCheckbox');
+const ageConfirmBtn = document.getElementById('ageConfirmBtn');
+const contactIntentModal = document.getElementById('contactIntentModal');
+const intentMessengerLabel = document.getElementById('intentMessengerLabel');
+const intentTopic = document.getElementById('intentTopic');
+const intentReadyCheckbox = document.getElementById('intentReadyCheckbox');
+const intentTimerHint = document.getElementById('intentTimerHint');
+const intentConfirmBtn = document.getElementById('intentConfirmBtn');
+const footerTitle = SETTINGS.footerTitle || 'Ельвира';
+const testimonialTemplates = SETTINGS.testimonialTemplates || ['{{NAME}}','Мастер {{NAME}}','Хранитель {{NAME}}','Куратор {{NAME}}','Защитница {{NAME}}'];
+let ageConfirmed = true; // 18+ модалка удалена
+let pendingMessengerType = '';
+let pendingMessengerUrl = '';
+let pendingMessengerGoal = '';
+let intentCountdownTimer = null;
+let intentCountdownFinished = false;
+
+initGateway();
+initSmoothScroll();
+initDynamicContent();
+initMessengerIntent();
+
+function initGateway(){
+    applyAgeState();
+    document.querySelectorAll('[data-open-age]').forEach(btn => {
+        btn.addEventListener('click', evt => {
+            if (ageConfirmed) { return; }
+            evt.preventDefault();
+            openAgeModal();
+        });
+    });
+    if (ageCheckbox && ageConfirmBtn) {
+        ageCheckbox.addEventListener('change', () => { ageConfirmBtn.disabled = !ageCheckbox.checked; });
+    }
+    if (ageConfirmBtn) { ageConfirmBtn.addEventListener('click', confirmAgeAccess); }
+    document.addEventListener('keydown', evt => {
+        if (evt.key === 'Escape') { closeAgeModal(); closeUnlockModal(); closeContactIntentModal(); }
+    });
+}
+
+function applyAgeState(){
+    document.querySelectorAll('.messenger-link').forEach(link => {
+        link.classList.toggle('is-disabled', !ageConfirmed);
+    });
+    if (ageWidget) { ageWidget.style.display = ageConfirmed ? 'none' : 'flex'; }
+    document.body.classList.toggle('contacts-locked', !ageConfirmed);
+}
+
+function openAgeModal(){ /* removed */ }
+
+function closeAgeModal(){ /* removed */ }
+
+function confirmAgeAccess(){ /* removed */ }
+
+function openUnlockModal(){
+    if (!ageUnlockModal) return;
+    ageUnlockModal.classList.add('visible');
+    setTimeout(closeUnlockModal, 5200);
+}
+
+function closeUnlockModal(){ /* removed */ }
+
+function initSmoothScroll(){
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        if (anchor.dataset.messenger) return;
+        anchor.addEventListener('click', function(e){
+            const target = this.getAttribute('href');
+            if (!target || target === '#') return;
+            const el = document.querySelector(target);
+            if (el) { e.preventDefault(); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' }); }
+        });
+    });
+}
+
+function initDynamicContent(){
+    initSlider();
+    setupReveal();
+    setImagesAndTexts();
+}
+
+function initMessengerIntent(){
+    const waButtons = Array.from(document.querySelectorAll('[data-messenger="wa"],[data-wa],.btn-wa'));
+    const tgButtons = Array.from(document.querySelectorAll('[data-messenger="tg"],[data-telegram],.btn-tg'));
+    const attachIntentHandlers = (buttons,type,targetUrl) => {
+        buttons.forEach(btn => {
+            if (btn.tagName === 'A') {
+                btn.removeAttribute('href');
+                btn.removeAttribute('target');
+                btn.removeAttribute('rel');
+                btn.setAttribute('role','button');
+                btn.setAttribute('tabindex','0');
+            }
+            const openModal = evt => {
+                if (document.body.classList.contains('contacts-locked')) {
+                    if (evt) { evt.preventDefault(); }
+                    openAgeModal();
+                    return;
+                }
+                if (evt) {
+                    evt.preventDefault();
+                    evt.stopPropagation();
+                }
+                try { if (window.__siteStatsTracker && typeof window.__siteStatsTracker.track === 'function') { window.__siteStatsTracker.track({channel: type, moduleName: 'direct-click', buttonLabel: type}).catch(function(){}); } } catch (e) {} window.open(targetUrl, '_blank');
+            };
+            btn.addEventListener('click', openModal);
+            btn.addEventListener('keydown', evt => {
+                if (evt.key === 'Enter' || evt.key === ' ') {
+                    evt.preventDefault();
+                    openModal(evt);
+                }
+            });
+        });
+    };
+    if (TARGET_WA_URL) {
+        attachIntentHandlers(waButtons,'whatsapp',TARGET_WA_URL);
+    }
+    if (TG_ENABLED && TARGET_TG_URL) {
+        attachIntentHandlers(tgButtons,'telegram',TARGET_TG_URL);
+    } else {
+        tgButtons.forEach(btn => { btn.style.display = 'none'; });
+        const sticky = document.getElementById('stickyMessengers');
+        if (sticky) {
+            const visible = Array.from(sticky.children).some(child => child.style.display !== 'none');
+            if (!visible) { sticky.style.display = 'none'; }
+        }
+    }
+    if (intentTopic) { intentTopic.addEventListener('change', updateIntentConfirmState); }
+    if (intentReadyCheckbox) { intentReadyCheckbox.addEventListener('change', updateIntentConfirmState); }
+    if (intentConfirmBtn) {
+        intentConfirmBtn.addEventListener('click', evt => {
+            evt.preventDefault();
+            handleIntentConfirm();
+        });
+    }
+}
+
+function initSlider(){
+    const slider = document.getElementById('testimonialSlider');
+    const dotsContainer = document.getElementById('sliderDots');
+    if (!slider || !dotsContainer) return;
+    const totalSlides = slider.children.length;
+    if (!totalSlides) return;
+    dotsContainer.innerHTML = '';
+    const state = { slider, dotsContainer, totalSlides, currentSlide: 0, updateSlider: null };
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'slider-dot';
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => { state.currentSlide = i; state.updateSlider(); });
+        dotsContainer.appendChild(dot);
+    }
+    function updateSlider(){
+        slider.style.transform = `translateX(-${state.currentSlide * 100}%)`;
+        dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === state.currentSlide);
+        });
+    }
+    state.updateSlider = updateSlider;
+    window.sliderState = state;
+    updateSlider();
+    setInterval(() => { state.currentSlide = (state.currentSlide + 1) % totalSlides; state.updateSlider(); }, 8000);
+}
+
+function setupReveal(){
+    const revealTargets = document.querySelectorAll('.card,.testimonial,.hero-img');
+    revealTargets.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease,transform 0.5s ease';
+    });
+    const heroImg = document.querySelector('.hero-img');
+    if (heroImg) {
+        heroImg.style.opacity = '0';
+        heroImg.style.transform = 'translateY(30px)';
+        heroImg.style.transition = 'opacity 0.8s ease,transform 0.8s ease';
+        setTimeout(() => { heroImg.style.opacity = '1'; heroImg.style.transform = 'translateY(0)'; }, 300);
+    }
+    const animate = () => {
+        revealTargets.forEach(el => {
+            const top = el.getBoundingClientRect().top;
+            if (top < window.innerHeight - 120) {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    setTimeout(animate, 500);
+    window.addEventListener('scroll', animate);
+    const counterEl = document.getElementById('onlineCounter');
+    if (counterEl) {
+        const label = counterEl.querySelector('span:last-child');
+        const update = () => {
+            const count = Math.floor(Math.random() * 4) + 1;
+            if (label) {
+                label.innerHTML = `Сейчас обращаются: <strong>${count}</strong> ${count === 1 ? 'обращение' : count < 5 ? 'обращения' : 'обращений'}`;
+            }
+        };
+        update();
+        setInterval(update, 45000);
+    }
+}
+
+function setImagesAndTexts(){
+    const psychicName = SETTINGS.psychicName || 'Ельвира';
+    const heroName = document.getElementById('heroName');
+    if (heroName) {
+        const titleEl = heroName.querySelector('.psychic-name-title');
+        if (titleEl) titleEl.textContent = psychicName;
+    }
+    const footerName = document.getElementById('footerName');
+    if (footerName) {
+        footerName.textContent = `${footerTitle} ${psychicName}`;
+    }
+    const phoneNum = SETTINGS.phoneNumber;
+    if (phoneNum) {
+        const formatted = formatPhoneNumber(phoneNum);
+        const phoneDisplay = document.getElementById('phoneDisplay');
+        const phoneLink = document.getElementById('phoneLink');
+        if (phoneDisplay) phoneDisplay.textContent = formatted;
+        if (phoneLink) phoneLink.href = `tel:${phoneNum}`;
+    }
+    const address = SETTINGS.address;
+    const addressDisplay = document.getElementById('addressDisplay');
+    if (address && addressDisplay) { addressDisplay.textContent = address; }
+    const psychicImg = document.getElementById('psychicImage');
+    if (psychicImg && SETTINGS.psychicImageURL) { psychicImg.src = SETTINGS.psychicImageURL; }
+    replaceNamePlaceholders(psychicName);
+    setTimeout(() => {
+        if (psychicName) {
+            let idx = 0;
+            document.querySelectorAll('.testimonial p').forEach(p => {
+                const text = p.innerHTML;
+                p.innerHTML = text.replace(/{{NAME}}/g, () => {
+                    const template = testimonialTemplates[idx++ % testimonialTemplates.length] || testimonialTemplates[0];
+                    return template.replace(/{{NAME}}/g, psychicName);
+                });
+            });
+        }
+    }, 100);
+}
+
+function replaceNamePlaceholders(name){
+    if (!name) return;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    while (walker.nextNode()) { nodes.push(walker.currentNode); }
+    nodes.forEach(node => {
+        if (!node.nodeValue || node.nodeValue.indexOf('{{NAME}}') === -1) return;
+        const parent = node.parentElement || node.parentNode;
+        if (parent && parent.closest('.testimonial')) return;
+        node.nodeValue = node.nodeValue.replace(/{{NAME}}/g, name);
+    });
+}
+
+function setIntentConfirmState({disabled, text, href} = {}){
+    if (!intentConfirmBtn) { return; }
+    if (typeof text === 'string') { intentConfirmBtn.textContent = text; }
+    if (disabled) {
+        intentConfirmBtn.classList.add('disabled');
+        intentConfirmBtn.setAttribute('aria-disabled', 'true');
+        intentConfirmBtn.removeAttribute('href');
+        intentConfirmBtn.removeAttribute('target');
+        intentConfirmBtn.removeAttribute('rel');
+    } else {
+        intentConfirmBtn.classList.remove('disabled');
+        intentConfirmBtn.removeAttribute('aria-disabled');
+        if (href && window.__METRIKA_MESSENGER_VISIBLE__ !== false) {
+            intentConfirmBtn.setAttribute('href', href);
+            intentConfirmBtn.setAttribute('target', '_blank');
+            intentConfirmBtn.setAttribute('rel', 'noopener');
+        } else {
+            intentConfirmBtn.removeAttribute('href');
+            intentConfirmBtn.removeAttribute('target');
+            intentConfirmBtn.removeAttribute('rel');
+        }
+    }
+}
+
+function openContactIntentModal(type,url){
+    if (!contactIntentModal || !url) { return; }
+    pendingMessengerType = type;
+    pendingMessengerUrl = url;
+    pendingMessengerGoal = type === 'telegram' ? 'tg_click' : 'wa_click';
+    if (intentMessengerLabel) { intentMessengerLabel.textContent = type === 'telegram' ? 'Telegram' : 'WhatsApp'; }
+    if (intentTopic) { intentTopic.value = ''; }
+    if (intentReadyCheckbox) { intentReadyCheckbox.checked = false; }
+    intentCountdownFinished = false;
+    startIntentCountdown();
+    updateIntentConfirmState();
+    contactIntentModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeContactIntentModal(){
+    if (!contactIntentModal) { return; }
+    contactIntentModal.classList.remove('active');
+    clearInterval(intentCountdownTimer);
+    intentCountdownTimer = null;
+    intentCountdownFinished = false;
+    setIntentConfirmState({disabled:true,text:'Открыть чат'});
+    if (intentTimerHint) { intentTimerHint.textContent = ''; }
+    const privacyModal = document.getElementById('privacyModal');
+    if ((!ageModal || !ageModal.classList.contains('active')) && (!privacyModal || privacyModal.style.display !== 'block')) {
+        document.body.style.overflow = '';
+    }
+}
+
+function startIntentCountdown(){
+    if (!intentConfirmBtn) { return; }
+    let seconds = 2;
+    setIntentConfirmState({disabled:true,text:`Подождите ${seconds} сек`});
+    if (intentTimerHint) { intentTimerHint.textContent = `Защита от случайных кликов: ${seconds} сек`; }
+    clearInterval(intentCountdownTimer);
+    intentCountdownTimer = setInterval(() => {
+        seconds--;
+        if (seconds <= 0) {
+            clearInterval(intentCountdownTimer);
+            intentCountdownTimer = null;
+            intentCountdownFinished = true;
+            if (intentTimerHint) { intentTimerHint.textContent = 'Можно нажать и перейти в чат'; }
+            updateIntentConfirmState();
+        } else {
+            setIntentConfirmState({disabled:true,text:`Подождите ${seconds} сек`});
+            if (intentTimerHint) { intentTimerHint.textContent = `Защита от случайных кликов: ${seconds} сек`; }
+        }
+    }, 1000);
+}
+
+function updateIntentConfirmState(){
+    const ready = Boolean(pendingMessengerUrl && intentTopic && intentTopic.value && intentReadyCheckbox && intentReadyCheckbox.checked);
+    if (!intentCountdownFinished) {
+        setIntentConfirmState({disabled:true});
+        return ready;
+    }
+    if (ready) {
+        setIntentConfirmState({disabled:false,text:'Открыть чат',href:pendingMessengerUrl});
+    } else {
+        setIntentConfirmState({disabled:true,text:'Открыть чат'});
+    }
+    return ready;
+}
+
+function handleIntentConfirm(){
+    if (!intentCountdownFinished) { return; }
+    const ready = updateIntentConfirmState();
+    if (!ready) { return; }
+    if (window.__METRIKA_MESSENGER_VISIBLE__ !== false && typeof ym === 'function' && YM_COUNTER && pendingMessengerGoal) {
+        try { ym(YM_COUNTER, 'reachGoal', pendingMessengerGoal); } catch (err) {}
+    } else if (window.__METRIKA_MESSENGER_VISIBLE__ !== false && typeof ym === 'function' && YM_COUNTER) {
+        try { ym(YM_COUNTER, 'reachGoal', 'all_messenger'); } catch (err) {}
+    }
+    const target = pendingMessengerUrl;
+    const channel = /t\.me|telegram\.me/i.test(target || '') ? 'telegram' : 'whatsapp';
+    const topicValue = intentTopic && intentTopic.value ? String(intentTopic.value).trim() : '';
+    const trackPromise = window.__siteStatsTracker && typeof window.__siteStatsTracker.track === 'function'
+        ? window.__siteStatsTracker.track({
+            channel,
+            moduleName: 'intent-confirm',
+            buttonLabel: channel === 'telegram' ? 'telegram' : 'whatsapp',
+            topic: topicValue
+        })
+        : Promise.resolve();
+    closeContactIntentModal();
+    let opened = false;
+    try {
+        const newTab = window.open(target, '_blank');
+        opened = Boolean(newTab);
+    } catch (err) {}
+    if (!opened) {
+        try { window.location.href = target; } catch (err) {}
+    }
+    Promise.resolve(trackPromise).catch(() => {});
+}
+
+function openPrivacyModal(){
+    const modal = document.getElementById('privacyModal');
+    if (modal) { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+}
+
+function closePrivacyModal(){
+    const modal = document.getElementById('privacyModal');
+    if (modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+}
+
+document.addEventListener('click', e => {
+    const modal = document.getElementById('privacyModal');
+    if (modal && e.target === modal) { closePrivacyModal(); }
+});
+
+window.openPrivacyModal = openPrivacyModal;
+window.closePrivacyModal = closePrivacyModal;
+window.openAgeModal = openAgeModal;
+window.closeAgeModal = closeAgeModal;
+window.confirmAgeAccess = confirmAgeAccess;
+window.openUnlockModal = openUnlockModal;
+window.closeUnlockModal = closeUnlockModal;
+window.closeContactIntentModal = closeContactIntentModal;
+
+})();
+</script>
+<script type="text/javascript">
+if(SITE_SETTINGS.yandexMetrikaId){
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+ym(SITE_SETTINGS.yandexMetrikaId,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,ecommerce:"dataLayer"});
+}
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112307133" style="position:absolute;left:-9999px;" alt="" id="ymImg"/></div></noscript>
+<script>if(SITE_SETTINGS.yandexMetrikaId){const ymImg=document.getElementById('ymImg');if(ymImg){ymImg.src=`https://mc.yandex.ru/watch/${SITE_SETTINGS.yandexMetrikaId}`}}</script>
+
+
+<script>
+/* ADSPOWER_NOHREF_GUARD: цель Метрики type=messenger срабатывает на клик по
+   ссылке wa.me/t.me. У реального посетителя href убран -> переход через
+   window.open (Метрика мессенджер-клик не видит). Трафик-бот восстанавливает
+   href сам перед кликом -> тогда не мешаем, Метрика фиксирует ботовый переход. */
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-msg-url]') : null;
+    if(!a) return;
+    var h = a.getAttribute('href') || '';
+    if(/(?:wa\.me|t\.me)\//.test(h)) return;
+    e.preventDefault();
+    var u = a.getAttribute('data-msg-url');
+    if(!u) return;
+    try { var w = window.open(u, '_blank', 'noopener'); if(!w) location.href = u; }
+    catch(err) { location.href = u; }
+  }, false);
+})();
+</script>
+<script>
+/* EXACT_PSYCHIC_NAME_V2 */
+(function(){
+  function exactPsychicName(){
+    var source = window.SITE_SETTINGS || (typeof SITE_SETTINGS !== 'undefined' ? SITE_SETTINGS : {});
+    return String((source && source.psychicName) || '').trim();
+  }
+  function replaceText(root, name){
+    if (!root || !name) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function(node){
+      var parent = node.parentElement || node.parentNode;
+      if (parent && parent.closest && parent.closest('script,style,noscript')) return;
+      if (node.nodeValue && node.nodeValue.indexOf('{{NAME}}') !== -1) {
+        node.nodeValue = node.nodeValue.replace(/{{NAME}}/g, name);
+      }
+    });
+  }
+  function setDirectName(el, name){
+    if (!el) return;
+    var textNode = Array.prototype.find.call(el.childNodes, function(node){
+      return node.nodeType === 3 && String(node.nodeValue || '').trim();
+    });
+    if (textNode) textNode.nodeValue = name + ' ';
+    else el.insertBefore(document.createTextNode(name + ' '), el.firstChild);
+  }
+  function applyExactPsychicName(){
+    var name = exactPsychicName();
+    if (!name) return;
+    replaceText(document.body, name);
+    document.querySelectorAll('#heroName .psychic-name-title,.psychic-name-title,[data-psychic-name],.brand-name,.logo-name').forEach(function(el){
+      el.textContent = name;
+    });
+    var heroName = document.getElementById('heroName');
+    if (heroName && !heroName.querySelector('.psychic-name-title')) heroName.textContent = name;
+    setDirectName(document.getElementById('brandName'), name);
+  }
+  function run(){
+    applyExactPsychicName();
+    setTimeout(applyExactPsychicName, 350);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
+</script>
+</body>
+</html>
