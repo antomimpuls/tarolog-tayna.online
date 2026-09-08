@@ -11,10 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script>
 const SITE_SETTINGS = {
-  'phoneNumber': '+79034359423',
-  'psychicName': 'Ельвира',
+  'phoneNumber': '+79034892630',
+  'psychicName': 'Римма',
   'telegramEnabled': 1,
-  'telegramNickname': 'Elviramag781',
+  'telegramNickname': 'Mag_Rima',
   'city': 'Москва',
   'address': 'г. Москва, ул. Петровка, д. 18, офис 93',
   'enableRedirect': false,
@@ -29,7 +29,7 @@ const SITE_SETTINGS = {
   'footerTitle': 'Магистр',
   'metrikaMessengerVisible': false
 };
-const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Ельвира';
+const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Римма';
 const PHONE_DIGITS=(SITE_SETTINGS.phoneNumber||'').replace(/\D/g,'');
 const WHATSAPP_MESSAGE=PSYCHIC_NAME ? `Здравствуйте, ${PSYCHIC_NAME}! Хочу обратиться к вам за помощью.` : 'Здравствуйте, хочу обратиться к вам за помощью.';
 const TELEGRAM_MESSAGE=WHATSAPP_MESSAGE;
@@ -894,7 +894,7 @@ const intentTopic = document.getElementById('intentTopic');
 const intentReadyCheckbox = document.getElementById('intentReadyCheckbox');
 const intentTimerHint = document.getElementById('intentTimerHint');
 const intentConfirmBtn = document.getElementById('intentConfirmBtn');
-const footerTitle = SETTINGS.footerTitle || 'Ельвира';
+const footerTitle = SETTINGS.footerTitle || 'Римма';
 const testimonialTemplates = SETTINGS.testimonialTemplates || ['{{NAME}}','Мастер {{NAME}}','Хранитель {{NAME}}','Куратор {{NAME}}','Защитница {{NAME}}'];
 let ageConfirmed = true; // 18+ модалка удалена
 let pendingMessengerType = '';
@@ -1089,7 +1089,7 @@ function setupReveal(){
 }
 
 function setImagesAndTexts(){
-    const psychicName = SETTINGS.psychicName || 'Ельвира';
+    const psychicName = SETTINGS.psychicName || 'Римма';
     const heroName = document.getElementById('heroName');
     if (heroName) {
         const titleEl = heroName.querySelector('.psychic-name-title');
