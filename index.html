@@ -11,10 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script>
 const SITE_SETTINGS = {
-  'phoneNumber': '+79034892630',
-  'psychicName': 'Римма',
+  'phoneNumber': '+79885513519',
+  'psychicName': 'Анастасия',
   'telegramEnabled': 1,
-  'telegramNickname': 'Mag_Rima',
+  'telegramNickname': '',
   'city': 'Москва',
   'address': 'г. Москва, ул. Петровка, д. 18, офис 93',
   'enableRedirect': false,
@@ -27,12 +27,11 @@ const SITE_SETTINGS = {
   'workingHours': 'круглосуточно',
   'responseTime': '5-15 минут',
   'footerTitle': 'Магистр',
-  'metrikaMessengerVisible': false
-,
-  "maxEnabled": false,
-  "maxUrl": ""
+  'metrikaMessengerVisible': false,
+  'maxEnabled': true,
+  'maxUrl': "https://web.max.ru/:push?userId=434235248"
 };
-const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Римма';
+const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Анастасия';
 const PHONE_DIGITS=(SITE_SETTINGS.phoneNumber||'').replace(/\D/g,'');
 const WHATSAPP_MESSAGE=PSYCHIC_NAME ? `Здравствуйте, ${PSYCHIC_NAME}! Хочу обратиться к вам за помощью.` : 'Здравствуйте, хочу обратиться к вам за помощью.';
 const TELEGRAM_MESSAGE=WHATSAPP_MESSAGE;
@@ -897,7 +896,7 @@ const intentTopic = document.getElementById('intentTopic');
 const intentReadyCheckbox = document.getElementById('intentReadyCheckbox');
 const intentTimerHint = document.getElementById('intentTimerHint');
 const intentConfirmBtn = document.getElementById('intentConfirmBtn');
-const footerTitle = SETTINGS.footerTitle || 'Римма';
+const footerTitle = SETTINGS.footerTitle || 'Анастасия';
 const testimonialTemplates = SETTINGS.testimonialTemplates || ['{{NAME}}','Мастер {{NAME}}','Хранитель {{NAME}}','Куратор {{NAME}}','Защитница {{NAME}}'];
 let ageConfirmed = true; // 18+ модалка удалена
 let pendingMessengerType = '';
@@ -1092,7 +1091,7 @@ function setupReveal(){
 }
 
 function setImagesAndTexts(){
-    const psychicName = SETTINGS.psychicName || 'Римма';
+    const psychicName = SETTINGS.psychicName || 'Анастасия';
     const heroName = document.getElementById('heroName');
     if (heroName) {
         const titleEl = heroName.querySelector('.psychic-name-title');
