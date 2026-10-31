@@ -11,10 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script>
 const SITE_SETTINGS = {
-  'phoneNumber': '+79933010375',
-  'psychicName': 'Ангелина Николаевна',
+  'phoneNumber': '+79885513519',
+  'psychicName': 'Анастасия',
   'telegramEnabled': true,
-  'telegramNickname': 'Angelinagadanie',
+  'telegramNickname': 'AnastasiyaGadaniie',
   'city': 'Москва',
   'address': 'г. Москва, ул. Петровка, д. 18, офис 93',
   'enableRedirect': false,
@@ -31,17 +31,17 @@ const SITE_SETTINGS = {
   'maxEnabled': true,
   'maxUrl': "https://web.max.ru/:push?userId=434235248"
 };
-const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Ангелина Николаевна';
+const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'Анастасия';
 const PHONE_DIGITS=(SITE_SETTINGS.phoneNumber||'').replace(/\D/g,'');
 const WHATSAPP_MESSAGE=PSYCHIC_NAME ? `Здравствуйте, ${PSYCHIC_NAME}! Хочу обратиться к вам за помощью.` : 'Здравствуйте, хочу обратиться к вам за помощью.';
 const TELEGRAM_MESSAGE=WHATSAPP_MESSAGE;
 const ENCODED_MESSAGE=encodeURIComponent(WHATSAPP_MESSAGE);
-const WA_URL="https://wa.me/79933010375?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B3%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%BD%D0%B0%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E.";
-const FALLBACK_WA_URL="https://wa.me/79933010375?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B3%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%BD%D0%B0%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E.";
+const WA_URL="https://wa.me/79885513519?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E.";
+const FALLBACK_WA_URL="https://wa.me/79885513519?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E.";
 const TARGET_WA_URL=WA_URL||FALLBACK_WA_URL;
 const TELEGRAM_ENABLED=Number(SITE_SETTINGS.telegramEnabled||0)===1;
 const TELEGRAM_NICKNAME=(SITE_SETTINGS.telegramNickname||'').replace(/^@+/,'');
-const TELEGRAM_URL="https://t.me/Angelinagadanie?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B3%D0%B5%D0%BB%D0%B8%D0%BD%D0%B0%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%BD%D0%B0%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E.";
+const TELEGRAM_URL="https://t.me/AnastasiyaGadaniie?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F%20%D0%BA%20%D0%B2%D0%B0%D0%BC%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E.";
 
 const SITE_STATS_TRACKER_CONFIG = {
     projectUrl: "https://stats.72-56-243-254.sslip.io",
@@ -526,7 +526,7 @@ footer{background:#05050a;padding:40px 0;text-align:center;border-top:1px solid 
 .studio-photo-backdrop{position:absolute;inset:7px;border-radius:50%;overflow:hidden;z-index:1;background:center/cover no-repeat url("https://tarolog-tayna.online/photo-f86c1edb8fd649319b45476241dcca14.jpg");filter:blur(8px);opacity:.85;pointer-events:none}
 .hero-img #psychicImage{box-sizing:border-box!important;object-fit:contain!important;object-position:center!important;padding:12%!important;background:transparent!important}
 </style>
-<!-- CONVERSIA_CONTACT_CONTRACT_V1 0c49aa91edceafa4c80a0ca3b43e3d6f396d75ebace5114921c669d2e05f1307 -->
+<!-- CONVERSIA_CONTACT_CONTRACT_V1 c0c493de406eab48099b8a9e6485e11ece13a05fb39f68dff965d30c6f01f0ba -->
 </head>
 <body>
 
@@ -556,9 +556,9 @@ footer{background:#05050a;padding:40px 0;text-align:center;border-top:1px solid 
 </div>
 <p style="margin-top:20px;color:#a8a8b8;font-size:0.95rem;font-weight:600" class="hero-cta-note">Контактные данные доступны после подтверждения 18+ — откройте их через нижнюю панель.</p>
 <p style="margin-top:10px;color:#fed7aa;font-size:0.95rem;font-weight:600" data-single-text="Все договорённости подтверждаю голосовыми сообщениями и контролирую работу в WhatsApp.">Выберите удобный мессенджер: я отвечаю сама и остаюсь на связи до результата.</p>
-<a href="tel:+79933010375" class="phone-link" id="phoneLink">
+<a href="tel:+79885513519" class="phone-link" id="phoneLink">
 <span style="font-size:1.5rem">📲</span>
-<span id="phoneDisplay">+7 (993) 301-03-75</span>
+<span id="phoneDisplay">+7 (988) 551-35-19</span>
 </a>
 <p style="margin-top:12px;font-size:0.9rem">⚡ <strong style="color:#fbbf24">Доступно 4 места на проверку сегодня</strong></p>
 <div class="stats">
@@ -902,7 +902,7 @@ const intentTopic = document.getElementById('intentTopic');
 const intentReadyCheckbox = document.getElementById('intentReadyCheckbox');
 const intentTimerHint = document.getElementById('intentTimerHint');
 const intentConfirmBtn = document.getElementById('intentConfirmBtn');
-const footerTitle = SETTINGS.footerTitle || 'Ангелина Николаевна';
+const footerTitle = SETTINGS.footerTitle || 'Анастасия';
 const testimonialTemplates = SETTINGS.testimonialTemplates || ['{{NAME}}','Мастер {{NAME}}','Хранитель {{NAME}}','Куратор {{NAME}}','Защитница {{NAME}}'];
 let ageConfirmed = true; // 18+ модалка удалена
 let pendingMessengerType = '';
@@ -1097,7 +1097,7 @@ function setupReveal(){
 }
 
 function setImagesAndTexts(){
-    const psychicName = SETTINGS.psychicName || 'Ангелина Николаевна';
+    const psychicName = SETTINGS.psychicName || 'Анастасия';
     const heroName = document.getElementById('heroName');
     if (heroName) {
         const titleEl = heroName.querySelector('.psychic-name-title');
